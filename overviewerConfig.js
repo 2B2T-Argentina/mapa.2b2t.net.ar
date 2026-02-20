@@ -5,6 +5,10 @@ var overviewerConfig = {
             "defaultMarker": "signpost.png",
             "signMarker": "signpost_icon.png",
             "bedMarker": "bed.png",
+            "spawnMarker": "markers/marker_home.png",
+            "spawnMarker2x": "markers/marker_home_2x.png",
+            "queryMarker": "markers/marker_location.png",
+            "queryMarker2x": "markers/marker_location_2x.png",
             "compass": {
                 "0": "compass_upper-left.png",
                 "1": "compass_upper-right.png",
@@ -18,51 +22,67 @@ var overviewerConfig = {
         "LOWERLEFT": 3,
         "LOWERRIGHT": 2
     },
-    "worlds": [
-        "world",
-    ],
+
+    "worlds": ["world"],
+
     "map": {
         "debug": false,
-        "cacheTag": "1681673832",
+        "cacheTag": "historical_archive",
         "north_direction": "lower-left",
         "controls": {
             "pan": true,
             "zoom": true,
-            "spawn": true,
+            "spawn": false,
             "compass": true,
             "mapType": true,
-            "overlays": true,
+            "overlays": false,
             "coordsBox": true
         }
     },
+
     "tilesets": [
+
         {
-            "name": "Spawn Render (lighting)",
+            "name": "2023-04-12",
+            "zoomLevels": 7,
+            "defaultZoom": 1,
+            "maxZoom": 7,
+            "path": "2023-04-12",
+            "bgcolor": "#1a1a1a",
+            "world": "world",
+            "imgextension": "png",
+            "isOverlay": false,
+            "center": [-143, 320, 120],
+            "north_direction": 0
+        },
+
+        {
+            "name": "2023-04-22",
             "zoomLevels": 8,
             "defaultZoom": 1,
             "maxZoom": 8,
-            "path": "world-lighting",
-            "base": "",
+            "path": "2023-04-22",
             "bgcolor": "#1a1a1a",
             "world": "world",
-            "last_rendertime": 1681672865,
             "imgextension": "png",
             "isOverlay": false,
-            "poititle": "Markers",
-            "showlocationmarker": true,
-            "center": [
-                467,
-                320,
-                516
-            ],
-            "lastrenderversion": 2,
-            "minZoom": 0,
-            "spawn": [
-                0,
-                320,
-                0
-            ],
+            "center": [467, 320, 516],
+            "north_direction": 0
+        },
+
+        {
+            "name": "2025-02-18",
+            "zoomLevels": 9,
+            "defaultZoom": 1,
+            "maxZoom": 9,
+            "path": "2025-02-18",
+            "bgcolor": "#1a1a1a",
+            "world": "world",
+            "imgextension": "png",
+            "isOverlay": false,
+            "center": [8, 64, -88],
             "north_direction": 0
         }
+
     ]
 };

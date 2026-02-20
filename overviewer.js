@@ -304,7 +304,11 @@ overviewer.util = {
         overviewer.map = L.map('mcmap', {crs: L.CRS.Simple});
 
         overviewer.map.attributionControl.setPrefix(
-            '<a href="https://overviewer.org">Overviewer/Leaflet</a>');
+            '<a href="https://overviewer.gregoryam.com/" target="blank">Overviewer</a> | <a href="https://leafletjs.com/">Leaflet</a>');
+
+        if (overviewerConfig['map']['attribution'] != null) {
+            overviewer.map.attributionControl.addAttribution(overviewerConfig['map']['attribution']);
+        }
 
         overviewer.map.on('baselayerchange', function(ev) {
             
@@ -501,7 +505,7 @@ overviewer.util = {
                                 // Convert coords
                                 let latlng = overviewer.util.fromWorldToLatLng(db.x, db.y, db.z, obj);
                                 // Set icon and use default icon if not specified
-                                let m_icon = L.divIcon({html: `<img class="ov-marker" src="${db.icon == undefined ? marker_entry.icon : db.icon}">`});
+                                let m_icon = L.divIcon({html: `<img class="ov-marker ${db.cssClass == undefined ? '' : db.cssClass}" src="${db.icon == undefined ? marker_entry.icon : db.icon}">`});
                                 // Create marker
                                 layerObj = new L.marker(latlng, {icon: m_icon, title: db.hovertext});
                             }
@@ -513,14 +517,12 @@ overviewer.util = {
                             marker_group.addLayer(layerObj);
                         }
                         // Save marker group
-                        var layer_name_html;
+                        var layer_name_html = marker_entry.displayName + '<div class="ov-marker-legend">';
                         if (marker_entry.showIconInLegend) {
-                            layer_name_html = marker_entry.displayName +
-                                '<img class="ov-marker-legend" src="' + marker_entry.icon + '"></img>';
+                            layer_name_html += '<img src="' + marker_entry.icon + '" />';
                         }
-                        else {
-                            layer_name_html = marker_entry.displayName;
-                        }
+                        layer_name_html += '</div>';
+
                         obj.marker_groups[layer_name_html] = marker_group;
                     }
                 }
